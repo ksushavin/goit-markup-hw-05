@@ -21,7 +21,11 @@
   /* Основной паддинг и маржин в секциях */
   --primary-section-padding: 94px;
   --primary-margin: 30px;
+
+  /* Анимация */
+  --anim-main: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 
 body {
   font-family: var(--main-font);
@@ -57,6 +61,7 @@ img {
 /* Убираем нижнее подчеркивание с ссылок */
 .link {
   text-decoration: none;
+  transition: color var(--anim-main);
 }
 
 /* Убираем отступы и маркеры на списках */
@@ -119,9 +124,12 @@ img {
 
 .logo-primary {
   color: #000000;
+  transition: color var(--anim-main);
 }
+
 .logo-secondary {
   color: var(--white-text-color);
+  transition: color var(--anim-main);
 }
 
 .nav > .logo {
@@ -148,6 +156,8 @@ img {
 
 /* Добавление паддингов на ссылки навигации */
 .nav-link {
+  position: relative;
+
   display: block;
   padding-top: 32px;
   padding-bottom: 32px;
@@ -157,11 +167,27 @@ img {
   line-height: 1.14;
   letter-spacing: 0.02em;
   color: var(--primary-text-color);
+
+  transition: color var(--anim-main);
 }
 
 /* Выделение цветом текущей страницы */
 .current {
   color: var(--accent-text-color);
+}
+
+/* Добавляем линию под текущей страницей */
+.current::after {
+position: absolute;
+left: 0;
+bottom: 0;
+
+content: "";
+display: block;
+width: 100%;
+height: 4px;
+border-radius: 2px;
+background-color: var(--accent-text-color);
 }
 
 
@@ -191,11 +217,15 @@ img {
   line-height: 1.14;
   letter-spacing: 0.02em;
   color: var(--secondary-text-color);
+
+  transition: color var(--anim-main);
 }
 
 .header-contacts-icons {
   fill: currentColor;
   margin-right: 10px;
+
+  transition: fill var(--anim-main);
 }
 
 
@@ -218,7 +248,6 @@ img {
   background-size: cover;
   background-repeat: no-repeat;
 }
-
 
 
 
@@ -254,7 +283,10 @@ img {
   background-color: var(--accent-text-color);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   cursor: pointer;
+
+  transition: background-color var(--anim-main);
 }
+
 .hero-btn:hover {
   background-color: #188ce8;
 }
@@ -315,6 +347,8 @@ img {
   color: var(--secondary-text-color);
 }
 
+/* Секция Services */
+
 /* Флексы для секции services*/
 .services.section {
   padding-top: 0;
@@ -328,6 +362,35 @@ img {
 .services-item:not(:last-child) {
   margin-right: 30px;
 }
+
+
+/* Позиционнированный текст на картинках секции  Services */
+
+.services-pic-wrapper {
+  position: relative;
+}
+
+.services-descr {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 370px;
+  height: 70px;
+  background-color:rgba(47, 48, 58, 0.8);
+
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.14;
+  text-transform: uppercase;
+  
+  color: #FFFFFF;
+}
+
 
 /* Секция team */
 .team {
@@ -401,7 +464,10 @@ img {
 
   background-repeat: no-repeat;
   background-position: center;
+
+  transition: background-color var(--anim-main), color var(--anim-main);
 }
+
 
 .socials-links:hover,
 .socials-links:focus {
@@ -411,6 +477,7 @@ img {
 
 .socials-icon {
   fill: currentColor;
+  /* transition: fill var(--anim-main); */
 }
 
 
@@ -433,12 +500,15 @@ img {
   display: flex;
   width: 170px;
   height: 92px;
-  color: var(--icons-color);
-  border: 1px solid #afb1b8;
   border-radius: 4px;
 
   justify-content: center;
-  align-items: center; 
+  align-items: center;
+
+  border: 1px solid #afb1b8; 
+  color: var(--icons-color);
+  transition: border-color var(--anim-main), color var(--anim-main);
+  
 }
 
 
@@ -477,11 +547,13 @@ img {
   font-weight: 500;
   font-size: 16px;
   line-height: 1.62;
+
   color: var(--primary-text-color);
   background-color: #f5f4fa;
   border-radius: 4px;
   box-shadow: none;
   cursor: pointer;
+  transition: color var(--anim-main), background-color var(--anim-main), box-shadov var(--anim-main);
 }
 
 .filter-button:hover,
@@ -511,8 +583,42 @@ img {
   box-shadow: none;
 }
 
+/* Добавляем текст поверх картинки */
+.pic-thumb {
+  position: relative;
+  overflow: hidden;
+}
+
+.project-descr {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transform: translateY(100%);
+  
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 63px 24px;
+
+  font-size: 18px;
+  line-height: 1.55;
+
+  width: 100%;
+  height: 100%;
+
+  color: var(--white-text-color);
+  background-color: rgba(33, 150, 243, 0.9);
+  
+  transition: transform var(--anim-main), box-shadow var(--anim-main);
+}
+
 .projects-link:hover,
-.projects-link:focus {
+.projects-link:focus,
+.projects-link:hover .project-descr
+{
+  transform: translateY(0%);
+
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
 }
 
@@ -536,6 +642,7 @@ img {
   letter-spacing: 0.06em;
   color: var(--primary-text-color);
 }
+
 .projects-text {
   margin-top: 4px;
 
@@ -612,8 +719,83 @@ img {
 .footer .socials-links {
   color: #ffffff;
   background-color: rgba(255, 255, 255, 0.1);
+  transition: background-color var(--anim-main);
 }
 
-.socials-links:hover,
-.socials-links:focus {
+.footer .socials-links:hover,
+.footer .socials-links:focus {
   background-color: var(--accent-text-color);
+}
+
+
+
+  /* ///////Модальное окно////////////////////// */
+
+  .backdrop {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.2);
+
+    opacity: 1;
+    visibility: visible;
+    pointer-events: initial;
+    /* Обязательно также указываем в транзишине свойство visibility, иначе при закрытии модалки не сработает анимация  */
+    transition: opacity var(--anim-main), visibility var(--anim-main);}
+
+
+  /* Прячем бекдроп при классе is-hidden */
+  .backdrop.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  } 
+
+  /* Задаем исходное состояние окна в спрятанном состоянии для его анимации: 
+  появляется с масштаба 0,8 с центра (если поменять местами транслейт и склейл - окно будет всплывать из нижнего правого своего угла!!!). И при таком способе не забываем указывать транслейт !! либо такой же как в modal-wrapper либо другие координаты по желанию либо макету */
+  .backdrop.is-hidden .modal-wrapper {
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+
+
+  .modal-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    
+    padding: 20px;
+    width: 528px;
+    height: 581px;
+    border-radius: 4px;
+
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12),
+    0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+    background-color: #ffffff;
+
+    transform: translate(-50%, -50%) scale(1);
+    transition: transform var(--anim-main);
+  }
+
+  .modal-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    
+  } 

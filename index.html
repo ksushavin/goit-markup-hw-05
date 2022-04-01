@@ -67,7 +67,7 @@
         <section class="hero">
             <div class="container">
                 <h1 class="hero-title">Эффективные решения для вашего бизнеса</h1>
-                <button type="button" class="hero-btn">Заказать услугу</button>
+                <button type="button" class="hero-btn" data-modal-open>Заказать услугу</button>
             </div>
         </section>
     
@@ -131,17 +131,30 @@
 
         <div class="container">
             <h2 class="title">Чем мы занимаемся</h2>
+
             <ul class="services-list list">
                 <li class="services-item">
-                    <img class="services-pic" src="./images/1.jpg" alt="Человек работает за ноутбуком" width="370" height="294">
+                    <div class="services-pic-wrapper">
+                        <img class="services-pic" src="./images/1.jpg" alt="Человек работает за ноутбуком" width="370" height="294">
+                        <p class="services-descr">Десктопные приложения</p>   
+                    </div>
                 </li>
+
                 <li class="services-item">
-                    <img class="services-pic" src="./images/2.jpg" alt="Человек сидит перед открытым ноутбуком и смотрит в телефон"
+                    <div class="services-pic-wrapper">
+                        <img class="services-pic" src="./images/2.jpg" alt="Человек сидит перед открытым ноутбуком и смотрит в телефон"
                         width="370" height="294">
+                        <p class="services-descr">Мобильные приложения</p>  
+                    </div>
                 </li>
+
                 <li class="services-item">
-                    <img class="services-pic" src="./images/3.jpg" alt="Дизайнер выбирает на планшете цвет из палитры цветов"
+                    <div class="services-pic-wrapper">
+                        <img class="services-pic" src="./images/3.jpg" alt="Дизайнер выбирает на планшете цвет из палитры цветов"
                         width="370" height="294">
+                        <p class="services-descr">Дизайнерские решения</p>
+                    </div>
+                    
                 </li>
             </ul>
         </div>
@@ -481,6 +494,22 @@
     </div>
 
  </footer>
+
+
+ <!-- Модальное окно -->
+ <div class="backdrop is-hidden" data-modal>
+     <div class="modal-wrapper">
+         <button class="modal-btn" type="button" data-modal-close>
+            <svg width="11" height="11">
+                <use href="./images/icons.svg#modal-close"></use>
+            </svg>
+         </button>
+         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt est mollitia temporibus</p>
+     </div>
+ </div>
+
+
+<script src="./js/modal.js"></script>
 
 </body>
 </html>
