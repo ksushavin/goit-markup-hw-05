@@ -180,7 +180,7 @@ img {
 .current::after {
 position: absolute;
 left: 0;
-bottom: 0;
+bottom: -1px;
 
 content: "";
 display: block;
@@ -207,6 +207,7 @@ background-color: var(--accent-text-color);
 .header-phone,
 .header-mail {
   display: flex;
+  align-items: center;
   text-align: center;
 
   padding-top: 32px;
@@ -284,7 +285,7 @@ background-color: var(--accent-text-color);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   cursor: pointer;
 
-  transition: background-color var(--anim-main);
+  transition: background-color var(--anim-main), box-shadow var(--anim-main);
 }
 
 .hero-btn:hover {
@@ -553,7 +554,7 @@ background-color: var(--accent-text-color);
   border-radius: 4px;
   box-shadow: none;
   cursor: pointer;
-  transition: color var(--anim-main), background-color var(--anim-main), box-shadov var(--anim-main);
+  transition: color var(--anim-main), background-color var(--anim-main), box-shadow var(--anim-main);
 }
 
 .filter-button:hover,
@@ -581,7 +582,14 @@ background-color: var(--accent-text-color);
 .projects-link {
   display: block;
   box-shadow: none;
+  transition: box-shadow var(--anim-main);
+  }
+
+.projects-link:hover,
+.projects-link:focus {
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
 }
+
 
 /* Добавляем текст поверх картинки */
 .pic-thumb {
@@ -610,16 +618,14 @@ background-color: var(--accent-text-color);
   color: var(--white-text-color);
   background-color: rgba(33, 150, 243, 0.9);
   
-  transition: transform var(--anim-main), box-shadow var(--anim-main);
+  transition: transform var(--anim-main);
 }
 
-.projects-link:hover,
-.projects-link:focus,
+
+.projects-link:focus .project-descr,
 .projects-link:hover .project-descr
 {
-  transform: translateY(0%);
-
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
+  transform: translateY(0%); 
 }
 
 
